@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&amp;family=Courier+Prime&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0c0e0a;color:#efece4;}
+a{color:#efece4;text-decoration:none;}
+a:hover{color:#f2a65a;}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#0c0e0a;font-family:'Archivo Narrow',sans-serif;">
+  <section data-screen-label="Hero" style="position:relative;height:100vh;min-height:560px;overflow:hidden;padding:{{ framePad }};box-sizing:border-box;">
+    <div style="position:relative;width:100%;height:100%;overflow:hidden;border-radius:{{ frameRadius }};">
+      <img src="assets/willa-hero.jpg" alt="Willa Kaplan" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(12,14,10,0.55) 0%, rgba(12,14,10,0) 30%, rgba(12,14,10,0.15) 50%, rgba(12,14,10,0) 70%, rgba(12,14,10,0.6) 100%);"></div>
+      <img src="assets/willa-logo-cropped.png" alt="Willa Kaplan" style="position:absolute;left:50%;top:{{ logoTop }};transform:translateX(-50%);width:min(440px,60vw,40vh);filter:invert(1);">
+      <div data-screen-label="Release" style="position:absolute;left:0;right:0;bottom:max(48px,9vh);display:flex;flex-direction:column;align-items:center;gap:20px;padding:0 24px;text-align:center;">
+        <h2 style="margin:0;font-family:'Courier Prime',monospace;font-weight:400;font-size:clamp(20px,2.6vw,32px);line-height:1.15;letter-spacing:0.12em;text-transform:uppercase;text-shadow:0 2px 24px rgba(12,14,10,0.45);text-wrap:balance;">Nothing's Sacred Out Now</h2>
+        <a href="https://found.ee/U0zPsR" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 40px;background:#efece4;color:#0c0e0a;font-family:'Courier Prime',monospace;font-size:16px;letter-spacing:0.2em;text-transform:uppercase;" style-hover="background:#f2a65a;color:#0c0e0a;">Listen</a>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;layout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Full bleed&quot;,&quot;Framed&quot;],&quot;default&quot;:&quot;Full bleed&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const framed = (this.props.layout ?? 'Full bleed') === 'Framed';
+    return {
+      framePad: framed ? 'clamp(16px,3vw,40px)' : '0',
+      frameRadius: framed ? '28px' : '0',
+      logoTop: framed ? '6vh' : 'max(48px, 8vh)'
+    };
+  }
+}
+</script>
+</body>
+</html>
